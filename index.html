@@ -1,3 +1,8 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <title>Prata RPN Financeira</title>
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="icon-192.png" sizes="192x192" type="image/png">
@@ -23,9 +28,10 @@
     font-family:"IBM Plex Sans", system-ui, sans-serif;
     -webkit-tap-highlight-color:transparent; user-select:none;
     overscroll-behavior:none;
+    touch-action:manipulation;
   }
   h1,h2,h3{ text-wrap:balance; margin:0 0 .5em; }
-  button{ font-family:inherit; }
+  button{ font-family:inherit; touch-action:manipulation; }
   ::selection{ background:var(--accent); color:#fff; }
 
   .page{ min-height:100dvh; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:12px; gap:10px; }
@@ -128,6 +134,7 @@
     padding:2px 2px 6px;
     font-family:"IBM Plex Sans Condensed", sans-serif; font-weight:600;
     font-size:clamp(10px,1.5vw,15px);
+    touch-action:manipulation;
   }
   .key:active{ background:var(--key-press); transform:translateY(1px); box-shadow:0 1px 1px rgba(30,34,40,.1); }
   .key .flabel{ position:absolute; top:2px; left:0; right:0; text-align:center; font-size:clamp(6px,.85vw,8.5px); color:var(--f-color); font-weight:700; letter-spacing:.02em; }
@@ -198,6 +205,8 @@
 
   @media (max-width:380px){ .key{ font-size:9px; } }
 </style>
+</head>
+<body>
 
 <div class="page">
   <div class="device" id="device">
@@ -1120,3 +1129,6 @@
   }
 })();
 </script>
+
+</body>
+</html>
