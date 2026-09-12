@@ -50,32 +50,20 @@
     display:flex; align-items:center; justify-content:space-between;
     background:linear-gradient(180deg,var(--metal-hi),var(--metal-mid) 65%,var(--metal-low));
     border:1px solid var(--case-border);
-    border-radius:8px; padding:4px 10px;
+    border-radius:6px; padding:2px 8px;
     flex:0 0 auto;
   }
   .brandplate{
     font-family:"IBM Plex Sans Condensed", sans-serif; font-weight:700; letter-spacing:.1em;
-    font-size:clamp(10px,1.3vw,12px); color:#4A505A; text-transform:uppercase;
+    font-size:clamp(8px,1vw,9.5px); color:#4A505A; text-transform:uppercase;
   }
   .histbtn{
-    border:1px solid var(--case-border); background:#fff; color:#3A3F47; border-radius:6px;
-    font-size:clamp(9px,1.2vw,11px); font-weight:600; padding:5px 9px; cursor:pointer;
+    border:1px solid var(--case-border); background:#fff; color:#3A3F47; border-radius:5px;
+    font-size:clamp(7.5px,.95vw,9px); font-weight:600; padding:3px 7px; cursor:pointer;
     font-family:"IBM Plex Sans", sans-serif;
   }
   .histbtn:active{ background:var(--key-press); }
-  .bottombar{
-    flex:0 0 auto; display:grid; grid-template-columns:repeat(10,1fr); gap:clamp(4px,.7vw,7px);
-    background:linear-gradient(180deg,var(--metal-hi),var(--metal-mid) 60%,var(--metal-low));
-    border:1px solid var(--case-border);
-    border-radius:8px; padding:8px 8px 15px;
-    position:relative;
-  }
-  .bottombar::after{
-    content:"PRATA \00b7 CALCULADORA FINANCEIRA"; position:absolute; left:0; right:0; bottom:3px;
-    text-align:center; font-family:"IBM Plex Sans Condensed",sans-serif; font-weight:700;
-    letter-spacing:.16em; font-size:clamp(7px,1vw,9px); color:#8A909A;
-  }
-  .device.powered-off .keypad-main, .device.powered-off .bottombar .key:not([data-key="on"]){
+  .device.powered-off .keypad .key:not([data-key="on"]){
     opacity:.32; filter:grayscale(.4);
   }
   .device.powered-off .lcd-main{ visibility:hidden; }
@@ -116,10 +104,19 @@
   .panel.active{ display:flex; flex-direction:column; }
 
   /* KEYPAD */
-  .panel[data-panel="calc"]{ gap:8px; }
-  .keypad-main{
-    flex:1; display:grid; grid-template-columns:repeat(10,1fr); grid-template-rows:repeat(3,1fr);
+  .panel[data-panel="calc"]{ gap:6px; }
+  .keypad{
+    flex:1; display:grid; grid-template-columns:repeat(10,1fr); grid-template-rows:repeat(4,1fr);
     gap:clamp(4px,.7vw,7px);
+    background:linear-gradient(180deg,var(--metal-hi),var(--metal-mid) 60%,var(--metal-low));
+    border:1px solid var(--case-border);
+    border-radius:8px; padding:8px 8px 15px;
+    position:relative;
+  }
+  .keypad::after{
+    content:"PRATA \00b7 CALCULADORA FINANCEIRA"; position:absolute; left:0; right:0; bottom:3px;
+    text-align:center; font-family:"IBM Plex Sans Condensed",sans-serif; font-weight:700;
+    letter-spacing:.16em; font-size:clamp(7px,1vw,9px); color:#8A909A;
   }
   .key{
     position:relative; border:1px solid var(--key-edge); border-radius:7px;
@@ -129,20 +126,18 @@
     display:flex; align-items:center; justify-content:center;
     padding:3px 2px 9px;
     font-family:"IBM Plex Sans Condensed", sans-serif; font-weight:600;
-    font-size:clamp(14px,2.3vw,21px);
+    font-size:clamp(15px,2.6vw,23px);
     touch-action:manipulation;
   }
   .key:active{ background:var(--key-press); transform:translateY(1px); box-shadow:0 1px 1px rgba(30,34,40,.1); }
-  .key .flabel{ position:absolute; top:3px; left:0; right:0; text-align:center; font-size:clamp(7.5px,1.05vw,10.5px); color:var(--f-color); font-weight:700; letter-spacing:.02em; }
-  .key .glabel{ position:absolute; bottom:2px; left:0; right:0; text-align:center; font-size:clamp(7.5px,1.05vw,10.5px); color:var(--g-color); font-weight:700; letter-spacing:.02em; }
+  .key .flabel{ position:absolute; top:3px; left:0; right:0; text-align:center; font-size:clamp(8px,1.15vw,11px); color:var(--f-color); font-weight:700; letter-spacing:.02em; }
+  .key .glabel{ position:absolute; bottom:2px; left:0; right:0; text-align:center; font-size:clamp(8px,1.15vw,11px); color:var(--g-color); font-weight:700; letter-spacing:.02em; }
   .key.accent-f{ background:#C0392B; border-color:#a3301f; color:#fff; }
   .key.accent-g{ background:#2464B4; border-color:#1c4f91; color:#fff; }
   .key.accent-on{ background:#2A2C31; border-color:#2A2C31; color:#fff; }
-  .key.enter{ background:#2A2C31; border-color:#2A2C31; color:#fff; }
+  .key.enter{ background:#2A2C31; border-color:#2A2C31; color:#fff; grid-column:6; grid-row:3 / span 2; }
   .key.enter .glabel{ color:#9fd0ff; }
-  .key.enter-echo{ background:#2A2C31; border-color:#2A2C31; pointer-events:none; }
   .key.blank-shift .flabel, .key.blank-shift .glabel{ opacity:.22; }
-  .bottombar .key{ box-shadow:0 2px 3px rgba(30,34,40,.14); }
 
   /* GENERIC PANEL CONTENT (dados / datas / programa / ajustes) */
   .content{ flex:1; overflow-y:auto; padding:8px 4px 4px; color:var(--text); }
@@ -225,8 +220,7 @@
     <div class="panels">
       <!-- CALC -->
       <section class="panel active" data-panel="calc">
-        <div class="keypad-main" id="keypadMain"></div>
-        <div class="bottombar" id="keypadBottom"></div>
+        <div class="keypad" id="keypad"></div>
       </section>
 
       <!-- DADOS: estatística + fluxo de caixa -->
@@ -442,7 +436,7 @@
   function setX(v){ state.stack[0] = isFinite(v) ? v : NaN; }
 
   /* ---------------- KEY DEFINITIONS ---------------- */
-  // rows 1-3: keypad-main (10 cols x 3 rows) · row 4: bottombar (10 cols x 1 row)
+  // rows 1-3 (minus col 6): KEYS_MAIN · row 4 (minus col 6): KEYS_BOTTOM · ENTER spans col 6, rows 3-4 (grid placed via CSS)
   var KEYS_MAIN = [
     {id:'n',   label:'n',   f:'AMORT', g:'12×'},
     {id:'i',   label:'i',   f:'INT',   g:'12÷'},
@@ -471,7 +465,6 @@
     {id:'rdown', label:'R↓',  f:'PRGM', g:'GTO'},
     {id:'xy',    label:'x⇄y', f:'FIN',  g:'x≤y'},
     {id:'clx',   label:'CLx', f:'REG',  g:'x=0'},
-    {id:'enter', label:'',    f:'PREFIX', g:'', special:'enter-echo'},
     {id:'d1',    label:'1', f:'', g:''},
     {id:'d2',    label:'2', f:'', g:''},
     {id:'d3',    label:'3', f:'', g:''},
@@ -483,11 +476,11 @@
     {id:'gshift', label:'g',  special:'shift'},
     {id:'sto',    label:'STO', f:'', g:''},
     {id:'rcl',    label:'RCL', f:'', g:''},
-    {id:'enter',  label:'ENTER', f:'', g:'LSTx'},
     {id:'d0',     label:'0', f:'', g:'x̄'},
     {id:'dot',    label:',', f:'', g:'s'},
     {id:'sigp',   label:'Σ+', f:'', g:'Σ−'},
-    {id:'add',    label:'+', f:'', g:''}
+    {id:'add',    label:'+', f:'', g:''},
+    {id:'enter',  label:'ENTER', f:'PREFIX', g:'LSTx'}
   ];
   var KEYS = KEYS_MAIN.concat(KEYS_BOTTOM);
 
@@ -497,7 +490,6 @@
       btn.type='button';
       var cls='key';
       if(k.id==='enter') cls+=' enter';
-      if(k.special==='enter-echo') cls+=' enter-echo';
       if(!k.f && !k.g && !k.special) cls+=' blank-shift';
       btn.className=cls;
       btn.dataset.key = k.id;
@@ -508,9 +500,6 @@
       } else if(k.special==='on'){
         btn.classList.add('accent-on');
         btn.appendChild(main);
-      } else if(k.special==='enter-echo'){
-        var fLab0 = document.createElement('span'); fLab0.className='flabel'; fLab0.textContent = k.f || '·';
-        btn.appendChild(fLab0);
       } else {
         var fLab = document.createElement('span'); fLab.className='flabel'; fLab.textContent = k.f || '·';
         var gLab = document.createElement('span'); gLab.className='glabel'; gLab.textContent = k.g || '·';
@@ -519,10 +508,8 @@
       container.appendChild(btn);
     });
   }
-  var keypadMainEl = document.getElementById('keypadMain');
-  var keypadBottomEl = document.getElementById('keypadBottom');
-  buildKeys(keypadMainEl, KEYS_MAIN);
-  buildKeys(keypadBottomEl, KEYS_BOTTOM);
+  var keypadEl = document.getElementById('keypad');
+  buildKeys(keypadEl, KEYS);
 
   function switchTab(name){
     document.querySelectorAll('.tabbtn').forEach(function(b){ b.classList.toggle('active', b.dataset.tab===name); });
@@ -942,11 +929,10 @@
   function wireKeyClicks(container){
     container.addEventListener('click', function(e){
       var btn = e.target.closest('.key');
-      if(btn && !btn.classList.contains('enter-echo')) onKeyPress(btn.dataset.key);
+      if(btn) onKeyPress(btn.dataset.key);
     });
   }
-  wireKeyClicks(keypadMainEl);
-  wireKeyClicks(keypadBottomEl);
+  wireKeyClicks(keypadEl);
 
   /* ---------------- FORMAT / RENDER ---------------- */
   function fmt(v){
