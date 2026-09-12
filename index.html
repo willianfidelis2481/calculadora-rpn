@@ -22,7 +22,7 @@
     --bg:#EEF0F2; --surface:#FFFFFF; --text:#1B1D22; --text-muted:#666C76; --border:#D9DCE1; --accent:#2464B4;
   }
   *{box-sizing:border-box;}
-  html,body{height:100%;}
+  html,body{height:100%; overflow:hidden;}
   body{
     margin:0; background:var(--bg); color:var(--text);
     font-family:"IBM Plex Sans", system-ui, sans-serif;
@@ -34,16 +34,19 @@
   button{ font-family:inherit; touch-action:manipulation; }
   ::selection{ background:var(--accent); color:#fff; }
 
-  .page{ min-height:100dvh; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:0; gap:0; }
+  .page{
+    position:fixed; inset:0; overflow:hidden;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; padding:0; gap:0;
+  }
 
   .device{
-    width:100%; max-width:none;
+    width:100%; max-width:none; height:100%;
     background:var(--case-2);
     border-radius:0;
     box-shadow:none;
     padding:max(8px,env(safe-area-inset-top)) max(10px,env(safe-area-inset-right)) max(8px,env(safe-area-inset-bottom)) max(10px,env(safe-area-inset-left));
     display:flex; flex-direction:column; gap:8px;
-    height:100dvh;
+    overflow:hidden;
   }
 
   .topstrip{
