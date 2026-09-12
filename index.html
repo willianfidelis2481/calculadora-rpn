@@ -45,7 +45,7 @@
     border-radius:0;
     box-shadow:none;
     padding:max(8px,env(safe-area-inset-top)) max(10px,env(safe-area-inset-right)) max(8px,env(safe-area-inset-bottom)) max(10px,env(safe-area-inset-left));
-    display:flex; flex-direction:column; gap:8px;
+    display:flex; flex-direction:column; gap:6px;
     overflow:hidden;
   }
 
@@ -130,14 +130,14 @@
     display:flex; flex-direction:column; align-items:stretch; justify-content:center;
     padding:2px 2px 3px;
     font-family:"IBM Plex Sans Condensed", sans-serif; font-weight:600;
-    font-size:clamp(17px,3vw,27px);
+    font-size:clamp(18px,3.3vw,29px);
     touch-action:manipulation;
     overflow:hidden;
   }
   .key:active{ background:var(--key-press); transform:translateY(1px); box-shadow:0 1px 1px rgba(30,34,40,.1); }
   .key .mlabel{ flex:1 1 auto; display:flex; align-items:center; justify-content:center; min-height:0; line-height:1; }
-  .key .flabel{ flex:0 0 auto; text-align:center; font-size:clamp(6px,.85vw,8px); color:var(--f-color); font-weight:700; letter-spacing:0; line-height:1; }
-  .key .glabel{ flex:0 0 auto; text-align:center; font-size:clamp(6px,.85vw,8px); color:var(--g-color); font-weight:700; letter-spacing:0; line-height:1; }
+  .key .flabel{ flex:0 0 auto; text-align:center; font-size:clamp(6.5px,.95vw,9px); color:var(--f-color); font-weight:700; letter-spacing:0; line-height:1.1; }
+  .key .glabel{ flex:0 0 auto; text-align:center; font-size:clamp(6.5px,.95vw,9px); color:var(--g-color); font-weight:700; letter-spacing:0; line-height:1.1; }
   .key.accent-f{ background:#C0392B; border-color:#a3301f; color:#fff; }
   .key.accent-g{ background:#2464B4; border-color:#1c4f91; color:#fff; }
   .key.accent-on{ background:#2A2C31; border-color:#2A2C31; color:#fff; }
@@ -179,11 +179,11 @@
   details .body dd{ margin:0 0 6px; }
 
   /* TAB BAR */
-  .tabbar{ flex:0 0 auto; display:flex; gap:4px; background:#EDEFF2; border:1px solid var(--case-border); border-radius:8px; padding:4px; }
+  .tabbar{ flex:0 0 auto; display:flex; gap:3px; background:#EDEFF2; border:1px solid var(--case-border); border-radius:7px; padding:3px; }
   .tabbtn{
-    flex:1; background:transparent; border:none; color:var(--text-muted); border-radius:6px;
-    padding:8px 4px; font-size:clamp(10px,1.3vw,12px); font-weight:600; cursor:pointer;
-    font-family:"IBM Plex Sans",sans-serif; letter-spacing:.03em;
+    flex:1; background:transparent; border:none; color:var(--text-muted); border-radius:5px;
+    padding:4px 4px; font-size:clamp(8.5px,1.05vw,10px); font-weight:600; cursor:pointer;
+    font-family:"IBM Plex Sans",sans-serif; letter-spacing:.02em;
   }
   .tabbtn.active{ background:#fff; color:var(--text); box-shadow:0 1px 2px rgba(30,34,40,.15); }
 
