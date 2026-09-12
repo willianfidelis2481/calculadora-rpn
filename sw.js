@@ -1,4 +1,4 @@
-const CACHE = 'prata-rpn-v9';
+const CACHE = 'prata-rpn-v10';
 const ASSETS = ['index.html', 'manifest.json', 'icon.svg', 'icon-192.png', 'icon-512.png'];
 
 self.addEventListener('install', (e) => {

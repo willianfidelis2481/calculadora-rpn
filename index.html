@@ -128,16 +128,16 @@
     box-shadow:0 2px 3px rgba(30,34,40,.12);
     color:var(--text-on-key); cursor:pointer;
     display:flex; flex-direction:column; align-items:stretch; justify-content:center;
-    padding:3px 2px 4px;
+    padding:2px 2px 3px;
     font-family:"IBM Plex Sans Condensed", sans-serif; font-weight:600;
-    font-size:clamp(15px,2.6vw,23px);
+    font-size:clamp(17px,3vw,27px);
     touch-action:manipulation;
     overflow:hidden;
   }
   .key:active{ background:var(--key-press); transform:translateY(1px); box-shadow:0 1px 1px rgba(30,34,40,.1); }
   .key .mlabel{ flex:1 1 auto; display:flex; align-items:center; justify-content:center; min-height:0; line-height:1; }
-  .key .flabel{ flex:0 0 auto; text-align:center; font-size:clamp(7px,1.05vw,10px); color:var(--f-color); font-weight:700; letter-spacing:.01em; line-height:1.15; }
-  .key .glabel{ flex:0 0 auto; text-align:center; font-size:clamp(7px,1.05vw,10px); color:var(--g-color); font-weight:700; letter-spacing:.01em; line-height:1.15; }
+  .key .flabel{ flex:0 0 auto; text-align:center; font-size:clamp(6px,.85vw,8px); color:var(--f-color); font-weight:700; letter-spacing:0; line-height:1; }
+  .key .glabel{ flex:0 0 auto; text-align:center; font-size:clamp(6px,.85vw,8px); color:var(--g-color); font-weight:700; letter-spacing:0; line-height:1; }
   .key.accent-f{ background:#C0392B; border-color:#a3301f; color:#fff; }
   .key.accent-g{ background:#2464B4; border-color:#1c4f91; color:#fff; }
   .key.accent-on{ background:#2A2C31; border-color:#2A2C31; color:#fff; }
