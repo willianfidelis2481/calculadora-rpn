@@ -101,17 +101,18 @@
 
   .panels{ flex:1 1 auto; min-height:0; position:relative; }
   .panel{ position:absolute; inset:0; display:none; }
-  .panel.active{ display:flex; flex-direction:column; }
+  .panel.active{ display:flex; flex-direction:column; min-height:0; }
 
   /* KEYPAD */
-  .panel[data-panel="calc"]{ gap:6px; }
+  .panel[data-panel="calc"]{ gap:6px; min-height:0; }
   .keypad{
-    flex:1; display:grid; grid-template-columns:repeat(10,1fr); grid-template-rows:repeat(4,1fr);
+    flex:1; min-height:0; display:grid; grid-template-columns:repeat(10,minmax(0,1fr)); grid-template-rows:repeat(4,minmax(0,1fr));
     gap:clamp(4px,.7vw,7px);
     background:linear-gradient(180deg,var(--metal-hi),var(--metal-mid) 60%,var(--metal-low));
     border:1px solid var(--case-border);
-    border-radius:8px; padding:8px 8px 15px;
+    border-radius:8px; padding:6px 6px 13px;
     position:relative;
+    overflow:hidden;
   }
   .keypad::after{
     content:"PRATA \00b7 CALCULADORA FINANCEIRA"; position:absolute; left:0; right:0; bottom:3px;
@@ -131,9 +132,9 @@
     overflow:hidden;
   }
   .key:active{ background:var(--key-press); transform:translateY(1px); box-shadow:0 1px 1px rgba(30,34,40,.1); }
-  .key .mlabel{ flex:1 1 auto; display:flex; align-items:center; justify-content:center; min-height:0; line-height:1.05; }
-  .key .flabel{ flex:0 0 auto; text-align:center; font-size:clamp(8px,1.15vw,11px); color:var(--f-color); font-weight:700; letter-spacing:.02em; line-height:1.4; }
-  .key .glabel{ flex:0 0 auto; text-align:center; font-size:clamp(8px,1.15vw,11px); color:var(--g-color); font-weight:700; letter-spacing:.02em; line-height:1.4; }
+  .key .mlabel{ flex:1 1 auto; display:flex; align-items:center; justify-content:center; min-height:0; line-height:1; }
+  .key .flabel{ flex:0 0 auto; text-align:center; font-size:clamp(7px,1.05vw,10px); color:var(--f-color); font-weight:700; letter-spacing:.01em; line-height:1.15; }
+  .key .glabel{ flex:0 0 auto; text-align:center; font-size:clamp(7px,1.05vw,10px); color:var(--g-color); font-weight:700; letter-spacing:.01em; line-height:1.15; }
   .key.accent-f{ background:#C0392B; border-color:#a3301f; color:#fff; }
   .key.accent-g{ background:#2464B4; border-color:#1c4f91; color:#fff; }
   .key.accent-on{ background:#2A2C31; border-color:#2A2C31; color:#fff; }
