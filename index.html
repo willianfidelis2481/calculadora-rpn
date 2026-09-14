@@ -379,7 +379,7 @@
               <dt>f x⇄y → FIN</dt><dd>Limpa os registradores financeiros (n, i, PV, PMT, FV).</dd>
               <dt>g x⇄y → x≤y</dt><dd>Testa se X≤Y e mostra Verdadeiro/Falso.</dd>
               <dt>CLx</dt><dd>Limpa apenas X.</dd>
-              <dt>f CLx → REG</dt><dd>Zera os 10 registradores de memória (STO/RCL).</dd>
+              <dt>f CLx → REG</dt><dd>Limpa tudo: pilha, registradores STO/RCL, financeiro (n/i/PV/PMT/FV), estatística (Σ) e fluxos de caixa.</dd>
               <dt>g CLx → x=0</dt><dd>Testa se X=0 e mostra Verdadeiro/Falso.</dd>
               <dt>ENTER</dt><dd>Duplica X em Y (empilha).</dd>
               <dt>f ENTER → PREFIX</dt><dd>Cancela um STO/RCL pendente.</dd>
@@ -764,7 +764,7 @@
         return;
       case 'clx':
         finishEntry();
-        if(shift==='f'){ state.mem=new Array(10).fill(0); state.statusMsg='REG limpo'; return; }
+        if(shift==='f'){ pressCLEARALL(); return; }
         if(shift==='g'){ state.statusMsg = (getX()===0)?'x=0 : VERDADEIRO':'x=0 : FALSO'; return; }
         pressCLx();
         return;
