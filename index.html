@@ -623,7 +623,9 @@
     return pv+pmt*af+fv/k;
   }
   function solveRateBisection(n,pv,pmt,fv,begF){
+    if(pv===0 && pmt===0 && fv===0) return NaN;
     var lo=-0.99, hi=10, flo=tvmNPVFunc(lo,n,pv,pmt,fv,begF), fhi=tvmNPVFunc(hi,n,pv,pmt,fv,begF), tries=0;
+    if(Math.abs(flo)<1e-9 && Math.abs(fhi)<1e-9) return NaN;
     while(flo*fhi>0 && tries<60){ hi*=1.6; fhi=tvmNPVFunc(hi,n,pv,pmt,fv,begF); tries++; if(hi>1e7) break; }
     if(flo*fhi>0) return NaN;
     for(var k=0;k<200;k++){
